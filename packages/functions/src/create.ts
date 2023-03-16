@@ -14,7 +14,7 @@ export const main = handler(async (event:any) => { //TODO: add event type
       // The attributes of the item to be created
       customerId: "123", // The id of the connection
       connectionId: uuid.v1(), // A unique uuid
-      name: data.name,
+      connectionName: data.connectionName,
       tokenUri: data.tokenUri,
       createdAt: Date.now(), // Current Unix timestamp
     },

@@ -12,7 +12,11 @@ export function ApiStack({ stack, app }: StackContext) {
       },
     },
     routes: {
+      "GET /connections": "packages/functions/src/list.main",
+      "GET /connections/{connectionId}": "packages/functions/src/get.main",
       "POST /connections": "packages/functions/src/create.main",
+      "PUT /connections/{connectionId}": "packages/functions/src/update.main",
+      "DELETE /connections/{id}": "packages/functions/src/delete.main",
     },
   });
 

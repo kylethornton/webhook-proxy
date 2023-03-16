@@ -10,7 +10,7 @@ export function StorageStack({ stack, app }: StackContext) {
     fields: {
       customerId: "string",
       connectionId: "string",
-      name: "string",
+      connectionName: "string",
       tokenUri: "string",
     },
     primaryIndex: { partitionKey: "customerId", sortKey: "connectionId" },
