@@ -11,6 +11,7 @@ export function StorageStack({ stack, app }: StackContext) {
       customerId: "string",
       connectionId: "string",
       name: "string",
+      tokenUri: "string",
     },
     primaryIndex: { partitionKey: "customerId", sortKey: "connectionId" },
   });
