@@ -9,7 +9,7 @@ export const main = handler(async (event:any) => {
     TableName: Table.Connections.tableName,
     // 'Key' defines the partition key and sort key of the item to be updated
     Key: {
-      customerId: "123", // The id of the customer
+      customerId: event.requestContext.authorizer.iam.cognitoIdentity.identityId,
       connectionId: event.pathParameters.connectionId, // The id of the connection from the path
     },
     // 'UpdateExpression' defines the attributes to be updated

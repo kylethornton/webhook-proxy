@@ -12,7 +12,7 @@ export const main = handler(async (event:any) => { //TODO: add event type
     TableName: Table.Connections.tableName,
     Item: {
       // The attributes of the item to be created
-      customerId: "123", // The id of the connection
+      customerId: event.requestContext.authorizer.iam.cognitoIdentity.identityId,
       connectionId: uuid.v1(), // A unique uuid
       connectionName: data.connectionName,
       tokenUri: data.tokenUri,
