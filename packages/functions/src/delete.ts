@@ -7,8 +7,8 @@ export const main = handler(async (event:any) => {
     TableName: Table.Connections.tableName,
     // 'Key' defines the partition key and sort key of the item to be removed
     Key: {
-      customerId: event.requestContext.authorizer.iam.cognitoIdentity.identityId,
-      connectionId: event.pathParameters.id, // The id of the connection from the path
+      customerName: event.requestContext.authorizer.iam.cognitoIdentity.identityId,
+      connectionId: event.pathParameters.connectionId, // The id of the connection from the path
     },
   };
 

@@ -13,7 +13,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    async function onLoad() {
+    async function onLoad(event) {
       if (!isAuthenticated) {
         return;
       }
@@ -27,7 +27,8 @@ export default function Home() {
   
       setIsLoading(false);
     }
-  
+
+
     onLoad();
   }, [isAuthenticated]);
   
@@ -64,8 +65,8 @@ export default function Home() {
   function renderLander() {
     return (
       <div className="lander">
-        <h1>Kwips</h1>
-        <p className="text-muted">A komodo webhook proxy service</p>
+        <h1>KWiPSS</h1>
+        <p className="text-muted">the komodo webhook proxy service for salesforce</p>
       </div>
     );
   }

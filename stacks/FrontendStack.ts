@@ -6,7 +6,6 @@ import { StorageStack } from "./StorageStack";
 export function FrontendStack({ stack, app }: StackContext) {
   const { api } = use(ApiStack);
   const { auth } = use(AuthStack);
-  const { bucket } = use(StorageStack);
 
   // Define our React app
   const site = new StaticSite(stack, "ReactSite", {
@@ -17,7 +16,6 @@ export function FrontendStack({ stack, app }: StackContext) {
     environment: {
       REACT_APP_API_URL: api.customDomainUrl || api.url,
       REACT_APP_REGION: app.region,
-      REACT_APP_BUCKET: bucket.bucketName,
       REACT_APP_USER_POOL_ID: auth.userPoolId,
       REACT_APP_IDENTITY_POOL_ID: auth.cognitoIdentityPoolId,
       REACT_APP_USER_POOL_CLIENT_ID: auth.userPoolClientId,

@@ -1,23 +1,28 @@
-import { Bucket, Table, StackContext } from "sst/constructs";
+import { Table, StackContext } from "sst/constructs";
 
 export function StorageStack({ stack, app }: StackContext) {
 
-  // Create an S3 bucket
-  const bucket = new Bucket(stack, "Uploads");
-
   // Create the DynamoDB table
-  const table = new Table(stack, "Connections", {
+  const connectionsTable = new Table(stack, "Connections", {
     fields: {
-      customerId: "string",
+      customerName: "string",
       connectionId: "string",
       connectionName: "string",
       tokenUri: "string",
     },
-    primaryIndex: { partitionKey: "customerId", sortKey: "connectionId" },
+    primaryIndex: { partitionKey: "customerName", sortKey: "connectionId" },
   });
-  
+
+  const userCustomersTable = new Table(stack, "UserCustomers", {
+    fields: {
+      userId: "string",
+      customerName: "string",
+    },
+    primaryIndex: { partitionKey: "userId", sortKey: "customerName" },
+  });
+
   return {
-    table,
-    bucket,
+    connectionsTable,
+    userCustomersTable,
   };
 }

@@ -2,14 +2,14 @@ import { Api, StackContext, use } from "sst/constructs";
 import { StorageStack } from "./StorageStack";
 
 export function ApiStack({ stack, app }: StackContext) {
-  const { table } = use(StorageStack);
+  const { connectionsTable, userCustomersTable } = use(StorageStack);
 
   // Create the API
   const api = new Api(stack, "Api", {
     defaults: {
       authorizer: "iam",
       function: {
-        bind: [table],
+        bind: [connectionsTable, userCustomersTable],
       },
     },
     routes: {
@@ -17,7 +17,7 @@ export function ApiStack({ stack, app }: StackContext) {
       "GET /connections/{connectionId}": "packages/functions/src/get.main",
       "POST /connections": "packages/functions/src/create.main",
       "PUT /connections/{connectionId}": "packages/functions/src/update.main",
-      "DELETE /connections/{id}": "packages/functions/src/delete.main",
+      "DELETE /connections/{connectionId}": "packages/functions/src/delete.main",
     },
   });
 
